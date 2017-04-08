@@ -1,0 +1,6 @@
+---
+- include: setup.yml
+
+- include: nginx.yml
+
+- include: deployapp.yml

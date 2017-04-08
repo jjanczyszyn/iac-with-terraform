@@ -1,0 +1,16 @@
+---
+
+- name: create log directory
+  file: dest=/var/log/nginx state=directory
+
+- name: disable default site
+  file: dest=/etc/nginx/sites-enabled/default state=absent
+  notify: restart nginx
+
+- name: Create nginx configuration
+  template: src=nginx.conf.j2 dest=/etc/nginx/sites-available/{{ app_name }}
+  notify: restart nginx
+
+- name: Enable site
+  file: src=/etc/nginx/sites-available/{{ app_name }} dest=/etc/nginx/sites-enabled/{{ app_name }} state=link
+  notify: restart nginx

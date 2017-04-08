@@ -1,0 +1,28 @@
+---
+
+- name: common tasks prior to provisioning
+  hosts: demo
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  roles:
+    - common
+
+- name: install and configure nginx
+  hosts: demo
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  roles:
+    - nginx
+
+- name: install and configure flask
+  hosts: demo
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+
+  roles:
+    - flask

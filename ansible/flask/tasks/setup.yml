@@ -1,0 +1,16 @@
+---
+
+- name: Install flask
+  apt: name=python-flask state=present
+
+- name: create app group
+  group: name={{ app_user }} state=present
+
+- name: create app user
+  user: name={{ app_user }} group={{ app_user }} createhome=no
+
+- name: create app directory
+  file: dest={{ app_directory }} state=directory owner={{ app_user }} group={{ app_user }}
+
+- name: create app log directory
+  file: dest={{ app_log_directory }} state=directory owner={{ app_user}} group={{ app_user }}

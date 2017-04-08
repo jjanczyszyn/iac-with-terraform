@@ -1,0 +1,49 @@
+variable "credentials_file" {
+    # Specify the path to your aws credentials file on mac it's usually /Users/{your_username}/.aws/credentials
+    default = "..."
+}
+
+variable "aws_profile" {
+    # Specify your aws profile name (especially handy if you use multiple aws accounts - leave as is if you're using the default one
+    default = "default"
+}
+
+variable "aws_region" {
+    description = "AWS region to launch servers."
+    default = "eu-west-1"
+}
+
+variable "instance_type" {
+    description = "Instance type for Flask instance"
+    default = "t2.micro"
+}
+
+# Ubuntu Trusty 14.04 LTS (x64)
+variable "aws_amis" {
+    type = "map"
+    default = {
+        eu-west-1 = "ami-752dbe06"
+        us-east-1 = "ami-7925d914"
+        us-west-1 = "ami-8c1268ec"
+        us-west-2 = "ami-1733cb77"
+        ap-northeast-1 = "ami-7a0fe01b"
+        ap-southeast-1 = "ami-72ac7c11"
+        ap-southeast-2 = "ami-aec9e7cd"
+        sa-east-1 = "ami-7d50db11"
+        eu-central-1 = "ami-0b907e64"
+    }
+}
+
+variable "server_port" {
+    description = "The port the server will use for HTTP requests"
+    default = 80
+}
+
+variable "public_key_path" {
+    # Specify the path to a public key you wish to use to authenticate to your ec2 instance
+    default = "..."
+}
+
+variable "ec2_key_name" {
+    default = "terraform"
+}

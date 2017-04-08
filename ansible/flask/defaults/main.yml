@@ -1,0 +1,9 @@
+# Common parameters
+
+app_name: "flask-hello"
+app_user: demo
+app_directory: "/opt/{{ app_name }}"
+app_log_directory: "/var/log/{{ app_name }}"
+port: 5000
+app_repo: https://github.com/tramwaj29/flask-hello.git
+app_module: app:app

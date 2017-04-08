@@ -1,0 +1,24 @@
+---
+
+- name: install gunicorn and git
+  apt: name={{ item }} state=present
+  with_items:
+    - gunicorn
+    - git
+
+- name: git clone app
+  git: repo={{ app_repo }} dest={{ app_directory }} accept_hostkey=true force=yes
+
+- name: kill existing app
+  command: pkill gunicorn
+  ignore_errors: yes
+
+- name: start app
+  command: |
+    gunicorn {{ app_module }}
+    -D -b localhost:{{ port }} chdir={{ app_directory }}
+    --access-logfile {{ app_log_directory }}/access.log
+    --error-logfile {{app_log_directory }}/error.log
+  become: yes
+  become_user: "{{ app_user }}"
+  notify: restart nginx
