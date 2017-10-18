@@ -1,4 +1,6 @@
-# iac-with-terraform
+# Infrastructure as Code with Terraform
+
+**Note**: based on [An Introduction to Terraform](https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180)
 
 ## Prerequisites
 1. AWS account [how to set it up](https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180)
@@ -10,8 +12,6 @@
 
 **Note**: This example deploys resources into your AWS account. 
 They should fall under the [AWS Free Tier](https://aws.amazon.com/free/) but beware ;)
-
-**Note**: based on [An Introduction to Terraform](https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180)
 
 1. Install [Terraform](https://www.terraform.io/). (If you're using brew try: `brew install terraform`)
 2. `cd` into terraform-demo folder.
